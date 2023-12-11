@@ -1,0 +1,11 @@
+.priority {
+    width: 10rem;
+}
+
+.submit {
+    width: 4rem;
+    background-color: forestgreen;
+    color: white;
+    border-radius: 2px;
+    border: none;
+}

@@ -16,8 +16,10 @@
     $task_result = $task_query->get_result();
 ?>
 
-<?php require_once "header.php" ?>
+
 <?php require_once "navbar.php" ?>
+
+<!-- include CSS -->
 <link href="../css/content.css" rel="stylesheet">
 <link href="../css/icons.css" rel="stylesheet">
 
@@ -33,12 +35,18 @@
     </tr>
     </thead>
     <tbody>
-    <script src="../js/completedTasks.js"></script>
+
+
 
     <?php foreach ($task_result as $task) : ?>
         <tr id="taskRow_<?= $task['id']; ?>">
-            <th><a href="completed_tasks.php" class="btn btn-success">Finsih</a></th>
-            <td>
+            <form id="taskForm" action="completed_tasks.php" method="POST">
+            <th>
+                <input type="checkbox" name="completed_task" id="checkbox_<?= $task['id']?>" onchange="finishTask(<?= $task['id']?>)">
+                <label for="checkbox_<?= $task['id']?>"></label>
+            </th>
+            </form>
+                <td> <!-- prikazivanje taskova u tabeli -->
                 <span id="task_<?= $task['id'] ?>">
                     <?= $task['task'] ?>
                 </span>
@@ -53,18 +61,12 @@
                     </form>
                 </div>
             </td>
+
             <!-- Dodani stupci za datum i vrijeme -->
-            <td class="date"></td>
-            <td class="time"></td>
-            <td>
-                <select>
-                    <option>---</option>
-                    <option class="low">Low</option>
-                    <option class="medium">Medium</option>
-                    <option class="high">High</option>
-                </select>
-            </td>
-            <td>
+            <td class="date"><?= $task['date'] ?></td> <!-- prikazivanje datuma u tabeli -->
+            <td class="time"><?= $task['time'] ?></td> <!-- prikazivanje tacnog vremena u tabeli -->
+            <td class="priority"><?= $task['priority'] ?></td> <!-- prikazivanje prioriteta u tabeli -->
+            <td> <!-- ikonice za edit i delete -->
                 <a href="javascript:void(0);" onclick="showEditForm(<?= $task['id'] ?>)" class="edit-icon" title="Edit Task">
                     <i class="fa-regular fa-pen-to-square"></i>
                 </a>
@@ -81,7 +83,7 @@
 <script src="../js/deleteTask.js"></script>
 <script src="../js/updateTask.js"></script>
 
-<?php  require_once "footer.php" ?>
+
 
 
 

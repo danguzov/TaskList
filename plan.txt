@@ -32,14 +32,28 @@ URADJENO
 2.OPCIJE: kasnije dodati
 
 *** CHECKBOX ***
-Dodati na svaki task checkbox i kada se taj checkbox cekira task treba da se prebaci na drugu stranicu da predje u Completed
+IMAM PROBLEM OVDE - SAMO KADA SE PRVI TASK CEKIRA, APLIKACIJA ME ODVEDE NA DRUGU STRANICU, ALI NA OSTALE CHECKBOXOVE
+NE RADI - PROVERITI DANAS ILI SUTRA
+
+
+<<<***
+Na checkboxovima se dogadja neka akcija kada se cekira ali samo prvi task i u nizu. Kada se cekira prvi, osvezenje se
+dogodi i korinsik je prosledjen na stranicu completed.php, ali ona ostaje prazna, nema cekiranog taska. Dok kada se drugi
+taaskovi cekiraju, ne dogadja se nista, nego samo kada se odcekiraju, onda se dogadja ista situacija kao i sa cekiranjem
+prvog taska.
+***>>>
+
+>>> Dodati na svaki task checkbox i kada se taj checkbox cekira task treba da se prebaci na drugu stranicu da predje u Completed,
+a sa content.php treba da se ukloni <<<
 
 *** Datum i vreme ***
+URADJENO
 Dodati najpre u bazi podatka jos dve kolone za datum i vreme dodavanj taska
 Kad korisnik unese task, zajedno sa tekstom taksa treba u bazi i ekra da se prikaze tacno vreme i datum kada je taj
 task dodat.
 
 *** Priority ***
+OSTALE SU SAMO BOJE DA SE DODAJU
 Kada korisnik odabere jednu od tri ponudjene opcije, taj tekst treba da postane READONLY,
 1. Ako je HIGH trebaju slova da budu crvene boje,
 2. Ako je MEDIUM trebaju slova da budu zute boje,

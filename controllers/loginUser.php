@@ -13,6 +13,14 @@
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    if (str_contains($email, "'")) {
+        die("You motherducker!");
+    }
+
+    if (preg_match("/\'|\"|\=/", $email)) {
+        die("I see what you did there!");
+    }
+
     $result = $db->query("SELECT * FROM users WHERE email = '$email' ");
 
     if($result->num_rows == 1) {
@@ -28,7 +36,7 @@
             $nameData = $nameQuery->fetch_assoc();
             $_SESSION['user_first_name'] = $nameData['first_name'];
 
-            header("Location: ../views/navbar.php");
+            header("Location: ../views/content.php");
         } else {
             echo "Forgot password?";
         }

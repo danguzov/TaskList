@@ -10,7 +10,6 @@
         $update->bind_param("si", $edited_task, $task_id);
         $update->execute();
 
-        // Dodajte poruku ili redirekciju prema potrebi
         header("Location: ../views/content.php");
         exit();
     }

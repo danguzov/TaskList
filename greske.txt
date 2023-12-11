@@ -1,0 +1,26 @@
+
+/**
+1. 
+Prva veca greska se dogodila kada sam u registrationUser.php hteo da izvrsim upit
+za email adresu. Odnosno, da li se ukucana email adresa prilikom registrovanja korisnika,
+vec nalazi u bazi. Tu se dogodila greska jer SQL je izvrsavao dva upita istovremeno: SELECT i INSERT.(a to ne moze).
+Onda sam iskoristio funkciju get_result(); da funkcija prikupi rezultate pretrage, zatim
+napravio varijablu $user u koju sam smestio funkciju fetch_asocc();
+Kada je ona prikupila rezultate tu je i stala, pa se SQL upit za INSERT nastavio uspeno izvrsavati.
+
+2. 
+U fajlu content.php u liniji 39 pri funkciji deleta task, sam koristio i javascript za izbacivanje pop-upa, jer kada
+korisnik klikne na slicicu za brisanje taska, izadje pop-up koji dodatno pita da li je korisnik sigurna da li zeli
+da se taj task obrise, ako je odgovor potvrdan task se brise sa liste i iz baze. U ovom kodu se prvoo izvrsava javascipt
+koji salje zahtev serveru, pa ako on bude potvrdan logiku preuzima php i brise task iz baze podataka. Klikom na dugme,
+CANCEL nist se ne desava, taskovi ostaju zapisani.
+Funkcionalnost javascript koda se nalazi na liniji 50 u istom fajlu.
+
+3.
+Na stranici content.php se iz odredjenog razloga, pojavljuje footer odmah iznad tabele sa zadacima. Negde se preplice kod
+tj. konkretno kod ukljucivanja fajlova zajedno sa BOOTSTRAP-om. Jer kada se korisnik uloguje na aplikaciju, pojaci se
+i footer u dnu stranice. Kada korinsik unese task preko modala, i kada se stranica osvezi pomocu PHP, taj isti footer se
+popne tacno iznda tabele i napravi malo veci nered u rasporedu elemenata. Sve i dalje savrseno radi, samo raspored se
+ispremesta da se u to ne moze gledati. Isto tako dobrodoslica koja se uspisuje kada se korisnik ulogije, ona se razdvoji
+na dva dela. Dobrodoslica ispisana slovima ostaje na vrhu stranice, dok se dugme za LOGOUT prebaci izmedju footera i tabele
+sa zadacima. (resiti sto pre i sto bolje)
