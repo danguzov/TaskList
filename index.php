@@ -6,7 +6,7 @@
     <title>Task List</title>
     <script src="https://kit.fontawesome.com/374a71cca5.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="css/index.css" rel="stylesheet">
+    <link href="assets/css/index.css" rel="stylesheet">
 </head>
 <body>
 
@@ -19,10 +19,9 @@
     </div>
 </header>
 
-
 <section id="login">
     <h4>Login</h4>
-    <form action="controllers/loginUser.php" method="POST" class="center-form">
+    <form action="" method="POST" class="center-form">
         <div class="form-floating mb-3">
             <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
             <label for="floatingInput">Email address</label>
@@ -37,7 +36,6 @@
     </form>
 </section>
 
-
 <section class="cta">
     <p>or</p>
     <div class="social-buttons">
@@ -45,10 +43,10 @@
         <button class="gmail"><i class="fa-brands fa-google"></i></button>
         <button class="github"><i class="fa-brands fa-github"></i></button>
     </div>
-    <p>Don't have an account? <a href="registration.php">Register here</a></p>
+    <p>Don't have an account? <a href="views/registration.php">Register here</a></p>
 </section>
 
-<?php  require_once "views/bootstrap_footer.php" ?>
+<?php require_once "include/scripts.php" ?>
 <?php require_once "views/footer.php" ?>
 
 
