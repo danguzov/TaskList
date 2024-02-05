@@ -1,21 +1,28 @@
-<?php require_once "header.php" ?>
-<?php require_once "greetings.php"; ?>
-
 <?php
     if(session_status() == PHP_SESSION_NONE) {
         session_start();
     }
 
+
+     require_once "../include/header.php";
+     require_once "greetings.php";
+
+
+
+
     if (isset($_SESSION['user_id'])) {
-        echo '<a href="../index.php" class="btn btn-light"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>';
+        echo '<a href="login.php" class="btn btn-light"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>';
     }
+
 ?>
-<link href="../css/modal.css" rel="stylesheet">
-<link href="../css/navbar.css" rel="stylesheet">
+
+
+<link href="../assets/css/modal.css" rel="stylesheet">
+<link href="../assets/css/navbar.css" rel="stylesheet">
 
     <ul class="nav justify-content-center" style="margin: 32px;">
         <li class="nav-item">
-            <a href="../profile.php" class="active">Profile</a>
+            <a href="profile.php" class="active">Profile</a>
         </li>
         <li class="nav-item">
             <a href="completed_tasks.php" class="active">Completed Tasks</a>
@@ -59,7 +66,7 @@
     </ul>
 
 <?php require_once "content.php" ?>
-<?php require_once "bootstrap_footer.php" ?>
+<?php require_once "../include/scripts.php" ?>
 
 
 

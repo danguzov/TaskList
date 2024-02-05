@@ -9,36 +9,37 @@ require_once "User.php";
 
 class Task
 {
+    public $sql;
     public $task;
     public $date;
     public $time;
     public $priority;
 
-    public function __construct($task, $date, $time, $priority)
+    public function __construct(Database $sql)
     {
-        $this->task = $task;
-        $this->date = $date;
-        $this->time = $time;
-        $this->priority = $priority;
-
-        parent::__construct();
+        $this->sql = $sql;
     }
 
-    public function getTask()
+    public function getTask($task)
     {
-        return $this->task;
+        //dobijanje korisnickog ID iz sesije
+        $user_id = $_SESSION['user_id'];
 
-        $task_query = $sql->prepare("SELECT * FROM tasks WHERE user_id = ? ORDER BY date DESC, time DESC");
+        $task_query = $this->sql->prepare("SELECT * FROM tasks WHERE user_id = ? ORDER BY date DESC, time DESC");
         $task_query->bind_param("i", $user_id);
         $task_query->execute();
 
         // get results
         $task_result = $task_query->get_result();
+        // vracanje stvarnih vrednosti iz baze podataka
+        return $task_result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function setTask($new_task)
+    public function setTask($user_id, $task, $date, $time, $priority)
     {
-        $this->task = $new_task;
+        $insert = $this->sql->prepare("INSERT INTO tasks(id, task, date, time, priority) VALUES (?, ?, ?, ?, ?)");
+        $insert->bind_param("isss", $user_id, $task, $date, $time, $priority);
+        $insert->execute();
     }
 
     public function delete($deleted_task)
@@ -46,7 +47,7 @@ class Task
         if(isset($_GET['task_id'])) {
             $task_id = $_GET['task_id'];
 
-            $delete = $sql->prepare("DELETE FROM tasks WHERE id = ?");
+            $delete = $this->sql->prepare("DELETE FROM tasks WHERE id = ?");
             $delete->bind_param("i", $task_id);
             $delete->execute();
 
@@ -62,7 +63,7 @@ class Task
             $task_id = $_POST['task_id'];
             $edited_task = $_POST['edited_task'];
 
-            $update = $sql->prepare("UPDATE tasks SET task = ? WHERE id = ?");
+            $update = $this->sql->prepare("UPDATE tasks SET task = ? WHERE id = ?");
             $update->bind_param("si", $edited_task, $task_id);
             $update->execute();
 

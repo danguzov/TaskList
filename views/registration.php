@@ -1,13 +1,14 @@
 <?php
     session_start();
-    require_once "../include/config.php";
+
     require_once "../class/Database.php";
     require_once "../class/User.php";
 
 
     //dependency injection
-    $db = new Database("localhost", "root", "", "task_list");
-    $user = new User($db);
+    $sql = new Database();
+    $user = new User($sql);
+
 
     if($_SERVER["REQUEST_METHOD"] === "POST") {
         $firstName = $_POST['first_name'];
@@ -36,7 +37,9 @@
     </div>
     </header>
 
-    <form action="" method="POST">
+    <a href="../index.php">Back to home page</a>
+
+    <form action="../controllers/registrationController.php" method="POST">
         <section id="signup" style="max-width: 400px; margin: 0 auto; border-radius: 10px;">
             <h4>Sign Up</h4>
             <form action="" method="POST" class="center-form">
@@ -60,8 +63,11 @@
                     <button type="submit" class="btn btn-success" style="width: 100%;">Sign Up</button>
                 </div>
             </form>
-            <p>Already have an account? <a href="../index.php">Log In</a></p>
+            <p>Already have an account? <a href="login.php">Log In</a></p>
         </section>
     </form>
 
 <?php require_once "footer.php"; ?>
+
+<?php
+var_dump($_SESSION);

@@ -1,21 +1,25 @@
 <?php
 
+    require_once "../include/config.php";
 
-class Database extends mysqli
-{
-   private $db;
+    class Database
+    {
+        public $sql;
 
-   public function __construct($host, $username, $password, $dbName)
-   {
-       $this->db = new mysqli($host, $username, $password, $dbName);
+        public function __construct()
+        {
+            $this->sql = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+            if($this->sql->connect_error) {
+                die("Connection failed: " . $this->sql->connect_error);
+            }
+        }
 
-       if($this->db->$this->connect_error) {
-           die("Connection failed: " . $this->db->connect_error);
-       }
-   }
-
-   public function getConnection()
-   {
-       return $this->db;
-   }
-}
+        public function prepare($query)
+        {
+            return $this->sql->prepare($query);
+        }
+        public function closeConn()
+        {
+            mysqli_close($this->sql);
+        }
+    }

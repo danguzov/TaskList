@@ -1,5 +1,5 @@
-<?php require_once "views/header.php" ?>
-<?php require_once "controllers/edit_profile.php" ?>
+<?php require_once "../include/header.php" ?>
+
 <?php
     session_start();
 ?>
@@ -108,4 +108,4 @@
 
 
 
-<?php require_once "views/scripts.php" ?>
+<?php require_once "../include/scripts.php" ?>

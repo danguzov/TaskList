@@ -1,12 +1,12 @@
 <?php
 
-    require_once "../include/conn.php";
+    require_once "../class/Database.php";
 
     if (isset($_POST['task_id']) && isset($_POST['edited_task'])) {
         $task_id = $_POST['task_id'];
         $edited_task = $_POST['edited_task'];
 
-        $update = $db->prepare("UPDATE tasks SET task = ? WHERE id = ?");
+        $update = $sql->prepare("UPDATE tasks SET task = ? WHERE id = ?");
         $update->bind_param("si", $edited_task, $task_id);
         $update->execute();
 
