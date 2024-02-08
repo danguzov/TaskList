@@ -7,7 +7,7 @@ if(session_status() == PHP_SESSION_NONE) {
 require_once "Database.php";
 require_once "User.php";
 
-class Task
+class Task extends Database
 {
     public $sql;
     public $task;
@@ -15,12 +15,13 @@ class Task
     public $time;
     public $priority;
 
-    public function __construct(Database $sql)
+    public function __construct()
     {
-        $this->sql = $sql;
+        parent::__construct();
+        // ... inicijalizacija property-a
     }
 
-    public function getTask($task)
+    public function getTasks()
     {
         //dobijanje korisnickog ID iz sesije
         $user_id = $_SESSION['user_id'];
