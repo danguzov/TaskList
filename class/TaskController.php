@@ -1,18 +1,17 @@
 <?php
 
     require_once "Task.php";
+    require_once "Database.php";
 
     class TaskController
     {
-        // construct
+        public $sql;
 
-        // editTask (ova funkcija zove Task->edit() i nakon toga radi redirekciju
-
-        // deleteTask (ova funckija zove Task->delete() i radi redirekciju
-
-        // createTask (ova funkcija zove Task->create() i radi redirekciju
-
-        // getTasks (ova funckija zove Task->getAllT()
+        public function __construct()
+        {
+            $database = new Database();
+            $this->sql = $database->sql;
+        }
 
         public function getAllTasks()
         {
@@ -20,11 +19,61 @@
             return $task->getTasks();
         }
 
+        // editTask (ova funkcija zove Task->edit() i nakon toga radi redirekciju
+
+        // deleteTask (ova funckija zove Task->delete() i radi redirekciju
+
+        // createTask (ova funkcija zove Task->create() i radi redirekciju
+
+        // getTasks (ova funckija zove Task->getAllT();
+
+
+
+        //ovde treba da nadjem nacin nekako da upuca ID taska a ne Usera, jer mi duplira id usera i nece da upise task u tabelu
+        public function create($user_id, $task, $date, $time, $priority)
+        {
+            $insert = $this->sql->prepare("INSERT INTO tasks(user_id, task, date, time, priority) VALUES (?, ?, ?, ?, ?)");
+            $insert->bind_param("issss", $user_id, $task, $date, $time, $priority);
+            $insert->execute();
+        }
+
+        public function delete($deleted_task)
+        {
+            if(isset($_GET['task_id'])) {
+                $task_id = $_GET['task_id'];
+
+                $delete = $this->sql->prepare("DELETE FROM tasks WHERE id = ?");
+                $delete->bind_param("i", $task_id);
+                $delete->execute();
+
+
+                header("Location:../views/content.php");
+                exit();
+            }
+        }
+
+        public function edit($edited_task)
+        {
+            if (isset($_POST['task_id']) && isset($_POST['edited_task'])) {
+                $task_id = $_POST['task_id'];
+                $edited_task = $_POST['edited_task'];
+
+                $update = $this->sql->prepare("UPDATE tasks SET task = ? WHERE id = ?");
+                $update->bind_param("si", $edited_task, $task_id);
+                $update->execute();
+
+                header("Location: ../views/content.php");
+                exit();
+            }
+
+
+        }
+
         public function renderTaskRow($task)
         {
             return <<<HTML
                 <tr id="taskRow_{$task['id']}"> // <!-- za cekiranje boxova da li su taskovi izvrseni -->
-                    <form id="taskForm" action="completed_tasks.php" method="POST">
+                    <form id="taskForm" action="../views/completed_tasks.php" method="POST">
                         <th>
                             <input type="checkbox" name="completed_task" id="checkbox_{$task['id']}" onchange="finishTask({$task['id']})">
                             <label for="checkbox_{$task['id']}"></label>
@@ -38,7 +87,7 @@
 
                         <div id="editTask_{$task['id']}" style="display: none;">
                             <!-- Hidden form for editing tasks -->
-                            <form method="post" action="../controllers/updateTask.php">
+                            <form method="post" action="../controllers/editController.php">
                                 <input type="hidden" name="task_id" value="{$task['id']}">
                                 <input type="text" name="edited_task" style="height: 30px; border-radius: 3px; padding: 5px;" value="{$task['task']}">
                                 <button type="submit" class="btn btn-primary">Save</button>

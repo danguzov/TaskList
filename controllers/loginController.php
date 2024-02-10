@@ -7,7 +7,7 @@
     $sql = new Database();
     $user = new User($sql);
 
-   // $user->login($email, $password);
+   // $user_controller->login($email, $password);
 
     $user_controller = new LoginController();
     $user_controller->login($_POST);

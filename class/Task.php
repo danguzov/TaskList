@@ -15,12 +15,12 @@ class Task extends Database
     public $time;
     public $priority;
 
+
     public function __construct()
     {
         parent::__construct();
         // ... inicijalizacija property-a
     }
-
     public function getTasks()
     {
         //dobijanje korisnickog ID iz sesije
@@ -36,40 +36,5 @@ class Task extends Database
         return $task_result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function setTask($user_id, $task, $date, $time, $priority)
-    {
-        $insert = $this->sql->prepare("INSERT INTO tasks(id, task, date, time, priority) VALUES (?, ?, ?, ?, ?)");
-        $insert->bind_param("isss", $user_id, $task, $date, $time, $priority);
-        $insert->execute();
-    }
 
-    public function delete($deleted_task)
-    {
-        if(isset($_GET['task_id'])) {
-            $task_id = $_GET['task_id'];
-
-            $delete = $this->sql->prepare("DELETE FROM tasks WHERE id = ?");
-            $delete->bind_param("i", $task_id);
-            $delete->execute();
-
-
-            header("Location:../views/content.php");
-            exit();
-        }
-    }
-
-    public function edit($edited_task)
-    {
-        if (isset($_POST['task_id']) && isset($_POST['edited_task'])) {
-            $task_id = $_POST['task_id'];
-            $edited_task = $_POST['edited_task'];
-
-            $update = $this->sql->prepare("UPDATE tasks SET task = ? WHERE id = ?");
-            $update->bind_param("si", $edited_task, $task_id);
-            $update->execute();
-
-            header("Location: ../views/content.php");
-            exit();
-        }
-    }
 }
