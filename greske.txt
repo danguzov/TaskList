@@ -18,9 +18,9 @@ Funkcionalnost javascript koda se nalazi na liniji 50 u istom fajlu.
 
 3.
 Na stranici content.php se iz odredjenog razloga, pojavljuje footer odmah iznad tabele sa zadacima. Negde se preplice kod
-tj. konkretno kod ukljucivanja fajlova zajedno sa BOOTSTRAP-om. Jer kada se korisnik uloguje na aplikaciju, pojaci se
+tj. konkretno kod ukljucivanja fajlova zajedno sa BOOTSTRAP-om. Jer kada se korisnik uloguje na aplikaciju, pojavi se
 i footer u dnu stranice. Kada korinsik unese task preko modala, i kada se stranica osvezi pomocu PHP, taj isti footer se
-popne tacno iznda tabele i napravi malo veci nered u rasporedu elemenata. Sve i dalje savrseno radi, samo raspored se
+popne tacno iznad tabele i napravi malo veci nered u rasporedu elemenata. Sve i dalje savrseno radi, samo raspored se
 ispremesta da se u to ne moze gledati. Isto tako dobrodoslica koja se uspisuje kada se korisnik ulogije, ona se razdvoji
 na dva dela. Dobrodoslica ispisana slovima ostaje na vrhu stranice, dok se dugme za LOGOUT prebaci izmedju footera i tabele
 sa zadacima. (resiti sto pre i sto bolje)

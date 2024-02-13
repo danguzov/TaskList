@@ -37,15 +37,16 @@
             $insert->execute();
         }
 
-        public function delete($deleted_task)
+        public function delete()
         {
+
             if(isset($_GET['task_id'])) {
                 $task_id = $_GET['task_id'];
+
 
                 $delete = $this->sql->prepare("DELETE FROM tasks WHERE id = ?");
                 $delete->bind_param("i", $task_id);
                 $delete->execute();
-
 
                 header("Location:../views/content.php");
                 exit();
@@ -65,8 +66,6 @@
                 header("Location: ../views/content.php");
                 exit();
             }
-
-
         }
 
         public function renderTaskRow($task)

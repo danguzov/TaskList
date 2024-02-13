@@ -6,11 +6,11 @@
 
 
     if(!isset($_POST['first_name']) || empty($_POST['first_name'])) {
-    echo "You must enter first name here";
+        echo "You must enter first name here";
     }
 
     if(!isset($_POST['last_name']) || empty($_POST['last_name'])) {
-    echo "You must enter last name here";
+        echo "You must enter last name here";
     }
 
     if(!isset($_POST['email']) || empty($_POST['email'])) {

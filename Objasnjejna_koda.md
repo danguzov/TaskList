@@ -33,7 +33,9 @@
         Na liniji 43. je startovanje sesije za novog korisnika.
         Na liniji 49 posle uspesne registracije korisnik je preusmeren na glavnu stranicu aplikacije.
 
-    c.)taskController.php
+    c.)taskController.php //
+        **** TREBA UNETI IZMENE, JER SE MNOGO FAJLOVA DO SADA OBRISALO JER SE PRESLO NA OOP ****
+
         Na pocetku koda se nalazi konekcija sa bazom podataka. Zatim se startuje ili obnvlja sesija u zavisnosti da se korisnik
         registruje ili ponovo prijavljuje.
         Na linije 7 se proverava da li je posalti zahtev HTTP POST, ako jeste onda se kod izvrsava dalje.
@@ -73,6 +75,17 @@
         sakrivena forma u koju korisk ukuca izmene taska i one ostaju sacuuvane i na ekranu i u bazi podataka.
         Na liniji 60 je zatvorena petlja i kod nastavlja dalje sa radom u koji su ukljuceni ostali fajlovi.
 
+    a.1) greetings.php
+        Na pocetku fajla je uklljucena klasa User radi dohvatanja podataka i metoda u ovom fajlu. Zatim se izvrasavca insanciranje
+        klase Database, zatim klase User, koji proseledjuje objekat klase Database i $firstName, zatim se rezultati vezani za
+        fisrtName dohvataju iz baze podataka prko metode getFirstName(); i spremaju se u sesiju. I nakon toga se ispisuje poruka
+        dobrodoslice.
+    a.2) loginController.php
+
+    a.3) class/User
+        U konstruktoru klase User je prosledjen i drugi argument koji j eopcioni a to je $firstName = ''; i on ne zahteva
+        obaevzno instanciranje.
+
 
 *** JS ***
     a.)deleteTask.js
@@ -102,3 +115,13 @@
         Ovaj kod koristi javascript i AJAX kako bi se asinhrono poslali podaci na server kada korisnik oznaci checkbox,
         a zatim preusmerava korisnka na drugu stranicu.
 
+
+*** OOP ***
+        a.) Napravljene su klase Database i User koje ce da sluze radi, prijavljivanja i registrovanja korisnika na
+        aplikaciju. U klasi Database je napravljena konekcija ka bazi a u fajlu config.php su date vredsnoti preko kojih
+        se konektujemo na bazu. U klasi User koristimo $sql public varijablu iz klase Database, koja u sebi sadrzi konekciju
+        sa bazom podataka. Neophodno je pre svega da se u klasi User, ukljuci fajl Database.php preko require_once, a zatim
+        i da korisnik nasledi klasu Database, kako bi mogao da koristi njene atrubute u ovom slucaju $sql, tj konekciju
+        sa bazom podataka.
+        Kada se klasa nasledi, u ovom slucaju to stoji ovako "class User extends Database{}", i sada klasa User ima
+        pristup toj varijabli za konekciju sa bazom podataka.

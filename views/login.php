@@ -1,14 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Task List</title>
-    <script src="https://kit.fontawesome.com/374a71cca5.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="../assets/css/index.css" rel="stylesheet">
-</head>
-<body>
+<?php
+
+session_start();
+
+require_once '../class/User.php';
+require_once '../class/Database.php';
+require_once "../class/LoginController.php";
+
+// prebaci ovaj kod u LoginController i onda zovi $login_controller->logout();
+
+$user = new LoginController();
+
+if (isset($_SESSION['user_id'])) {
+    $user->logout();
+}
+
+require_once "../include/header.php";
+?>
 
 <header>
     <div class="logo">

@@ -60,3 +60,36 @@ Kada korisnik odabere jednu od tri ponudjene opcije, taj tekst treba da postane 
 3. Ako je LOW slova trebaju da budu zelene boje.
 Korisnik posle toga ne moze vise da menja opciju prioriteta.
 
+*** IZLISTIVANJE TASKOVA ***
+(Ovo ce da se radi nekad kasnije jer sad sam probao, nit mi je sta jasno  nit mi ide, tako da idem dalje da mi ovo
+trenutno ne oduzima vreme)
+
+Kada korisnik unese novi task, taj task treba da se prikaze prvi, tjh na vrhu tabele.
+Pokusati, da se prioriteti, mogu menjati. tj da se postavi kao OPTION na svaki, ali da se prilikom odjavljivanja sacuvaju
+izmene ako ih ima.
+
+
+
+*** PROFIL ***
+
+1.Menjanje slike profila
+2.Izlistavanje osnovnih podataka, first name, last name, email adresa
+
+SVI OVI PODACI TREBA DA SE OSTAVE DA MOGU I DA SE EDITUJU, I ISPOD FORME DA STOJE DVA DUGMETA, SAVE I DISCARD
+
+Ispod ove forme stajace druga koja ce da bude za promenu lozike, prikazace trenutnu lozinku u jednom input polju,
+zatim u sledecem redu ce da budu prikazana dva unpita za novi password i potvrdu novog passworda, kao i gore,
+isto sa dva dugmeta, SAVE I DISCARD
+
+
+*** KANTA ZA SMECE ***
+Kada korisnik obrise task, a zeli da ga vrati nazad, svi obrisani taskovi ce da odu u tu kantu, ali ce posle 15 dana od
+brisanja taksa sa profila automstski obrisati i iz kante
+
+
+*** COMPLETED TASKS ***
+Na ovoj stranici je neophodno da se nalaze svi cekirani taskovi i ici ce na completed_tasks.php stanicu.
+Ti taskovi ce da budu readonly, tj da korisnik moze samo da vidi taskove koje je izvrsio i njihovu istoriju, npr, vreme
+kada je task upisan, vreme kada je task izvesen, i koliko je vremena trebalo korisniku da zavrsi jedan odredjeni zadatak.
+
+

@@ -1,16 +1,14 @@
 <?php
+
+    // prebaciti ovo u header.php
     if(session_status() == PHP_SESSION_NONE) {
         session_start();
     }
 
+    require_once "../include/header.php";
+    require_once "greetings.php";
 
-     require_once "../include/header.php";
-     require_once "greetings.php";
-
-
-
-
-    if (isset($_SESSION['user_id'])) {
+     if (isset($_SESSION['user_id'])) {
         echo '<a href="login.php" class="btn btn-light"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>';
     }
 
