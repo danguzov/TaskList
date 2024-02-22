@@ -17,6 +17,8 @@ if (isset($_SESSION['user_id'])) {
 require_once "../include/header.php";
 ?>
 
+
+
 <header>
     <div class="logo">
         <i class="fa-solid fa-igloo"></i>

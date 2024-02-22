@@ -125,3 +125,12 @@
         sa bazom podataka.
         Kada se klasa nasledi, u ovom slucaju to stoji ovako "class User extends Database{}", i sada klasa User ima
         pristup toj varijabli za konekciju sa bazom podataka.
+
+
+*** Javascipt ***
+
+        Sutra uraditi proveru koda koji sam sa Bolicem radio, pre svega javascript i sve izmene koje smo dodali, da se 
+        u potpunosti razumeju. Posle toga, uraditi checkbox logiku i front aplikacije. Pa zatim se prelazi na LARAVEL. 
+        U Laravel se kasnije prebacuje cela aplikacija, i jos projekata. 
+        Pa nek je sa srecom!!!...!!!...!!!...!!!...!!!<<<>>>
+

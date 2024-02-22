@@ -2,6 +2,7 @@
 
     require_once "Task.php";
     require_once "Database.php";
+    require_once "../include/helpers.php";
 
     class TaskController
     {
@@ -39,21 +40,24 @@
 
         public function delete()
         {
+            $data = get_json_data();
+            error_log("json data from request: " . json_encode($data), LOG_ERR);
 
-            if(isset($_GET['task_id'])) {
-                $task_id = $_GET['task_id'];
-
+            if(isset($data['task_id'])) {
+                $task_id = $data['task_id'];
+                error_log("task id from request: {$task_id}", LOG_ERR);
 
                 $delete = $this->sql->prepare("DELETE FROM tasks WHERE id = ?");
                 $delete->bind_param("i", $task_id);
-                $delete->execute();
-
-                header("Location:../views/content.php");
-                exit();
+                return $delete->execute();
+            } else {
+                error_log("task_id not found in \$_POST", LOG_ERR);
             }
+
+            return false;
         }
 
-        public function edit($edited_task)
+        public function edit()
         {
             if (isset($_POST['task_id']) && isset($_POST['edited_task'])) {
                 $task_id = $_POST['task_id'];
@@ -71,7 +75,7 @@
         public function renderTaskRow($task)
         {
             return <<<HTML
-                <tr id="taskRow_{$task['id']}"> // <!-- za cekiranje boxova da li su taskovi izvrseni -->
+                <tr id="taskRow_{$task['id']}"> <!-- za cekiranje boxova da li su taskovi izvrseni -->
                     <form id="taskForm" action="../views/completed_tasks.php" method="POST">
                         <th>
                             <input type="checkbox" name="completed_task" id="checkbox_{$task['id']}" onchange="finishTask({$task['id']})">
@@ -81,8 +85,8 @@
 
                     <td> <!-- prikazivanje taskova u tabeli -->
                         <span id="task_{$task['id']} ?>">
-                                        {$task['task']}
-                                    </span>
+                            {$task['task']}
+                        </span>
 
                         <div id="editTask_{$task['id']}" style="display: none;">
                             <!-- Hidden form for editing tasks -->

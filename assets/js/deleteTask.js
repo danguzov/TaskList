@@ -1,14 +1,27 @@
 
-    function confirmDelete(taskId) {
-    console.log("Confirm delete", taskId);
-        let result = confirm("Are you sure you want to delete this task?");
-            console.log("Task ID:", taskId);
-        if(result) {
-            window.location.href = "../../views/content.php?task_id=" + taskId;
-        } else {
-            window.location.herf = "../../views/content.php";
-            // for Cancel button
-        }
+   function deleteTask(taskId) {
+        let url = APP_PREFIX + "/controllers/deleteController.php";
 
-        console.log(taskId);
+        ajaxRequest(url, "post", {
+            task_id: taskId
+        }).then(data => {
+            let deleted = data.deleted
+
+            if (deleted) {
+                window.location.reload()
+            } else {
+                alert("Failed to delete task")
+            }
+        }).catch(err => {
+            console.log("Error: " + err);
+        })
+   }
+
+    function confirmDelete(taskId) {
+        console.log("Confirm TASK delete", taskId);
+        let result = confirm("Are you sure you want to delete this task?");
+
+        if(result) {
+            deleteTask(taskId)
+        }
     }

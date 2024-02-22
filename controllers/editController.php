@@ -6,7 +6,7 @@
 
     $sql = new Database();
     $edit_controller = new TaskController();
-    $edit_controller->edit($edited_task);
+    $edit_controller->edit();
 
     header("Location: ../views/content.php");
     exit();
