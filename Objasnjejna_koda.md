@@ -134,3 +134,9 @@
         U Laravel se kasnije prebacuje cela aplikacija, i jos projekata. 
         Pa nek je sa srecom!!!...!!!...!!!...!!!...!!!<<<>>>
 
+
+        ostalo je da se uradi da kada korisnik klikne na cekbox, izadje alert (to se i dogadja, samo sadda treba da kada korisnik
+        klinke na OK da se taj isti task prebaci na comleted_task.php. Ostalo je to da se uradi da se sredi i ne znam sta jos!!!
+        Neke stvari su se sad odradile samo mora da se sedne da se shvati sta tacno dogadja sa AJAX zahtevima i kako oni funkcionisu
+        I onda ostaje da se sredi malo front preko CSS, i onda napokon Laravel, valjda, nadam se!!!
+

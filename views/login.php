@@ -15,9 +15,10 @@ if (isset($_SESSION['user_id'])) {
 }
 
 require_once "../include/header.php";
+
 ?>
-
-
+<!-- Uključivanje CSS datoteke na stranici -->
+<link href="../assets/css/login.css" rel="stylesheet">
 
 <header>
     <div class="logo">
@@ -30,7 +31,7 @@ require_once "../include/header.php";
 </header>
 <a href="../index.php">Back to home page</a>
 
-<section id="login">
+<section id="login" class="login">
     <h4>Login</h4>
     <form action="../controllers/loginController.php" method="POST" class="center-form">
         <div class="form-floating mb-3">

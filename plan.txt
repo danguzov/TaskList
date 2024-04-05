@@ -1,95 +1,102 @@
 *** REGISTRACIJA I PRIJAVLJIVANJE ***
-URADJENO
-1.Upit u bazu: Da li korisnik vec postoji, ako postoji ispisati poruku, ako ne postoji preusmeriti ga na glavnu stranicu (ili izbaciti poruku ispod input polja ili uraditi nesto drugo)
-URADJENO
-2.Uporedjivanje hashovan lozinke iz baze sa onom ukucanom u input polje
-URADJENO
-3.Ako je lozinka tacna na pocetku ispisati poruku, a kasnije preusmeriti na odgovarajucu stranicu
-URADJENO
-4.Kada se korisnik uspeno uloguje preusmeriti ga na glavnu stranicu i pozeleti dobrodoslicu
+        URADJENO
+        1.Upit u bazu: Da li korisnik vec postoji, ako postoji ispisati poruku, ako ne postoji preusmeriti ga na glavnu
+        stranicu (ili izbaciti poruku ispod input polja ili uraditi nesto drugo)
+        URADJENO
+        2.Uporedjivanje hashovan lozinke iz baze sa onom ukucanom u input polje
+        URADJENO
+        3.Ako je lozinka tacna na pocetku ispisati poruku, a kasnije preusmeriti na odgovarajucu stranicu
+        URADJENO
+        4.Kada se korisnik uspeno uloguje preusmeriti ga na glavnu stranicu i pozeleti dobrodoslicu
 
 *** MODAL ***
-URADJENO
-1.Kada se otvori modal, iz input polja u modalu task ispisati u bazu i taj isti task, povuci iz baze i prikazati ga na ekranu.
+        URADJENO
+        1.Kada se otvori modal, iz input polja u modalu task ispisati u bazu i taj isti task, povuci iz baze i prikazati
+         ga na ekranu.
 
-URADJENO
-2.staviti checkbox na svaki task
+        URADJENO
+        2.staviti checkbox na svaki task
 
-URADJENO
-3.ponuditi opcije EDIT I DELETE task. Editovani i obrisani taskovi ce se menjati i u bazi podataka, tj ako korisnik
-edituje svoj task u aplikaciji, taj edit ce da bude dostupan i u bazi podataka.
-Isto to vazi i za komandu DELETE, ako korisnik iz aplikacije obrise svoj task, isti taj task ce se obrisati i iz baze
-podataka.
+        URADJENO
+        3.ponuditi opcije EDIT I DELETE task. Editovani i obrisani taskovi ce se menjati i u bazi podataka, tj ako
+         korisnik edituje svoj task u aplikaciji, taj edit ce da bude dostupan i u bazi podataka.Isto to vazi i za
+         komandu DELETE, ako korisnik iz aplikacije obrise svoj task, isti taj task ce se obrisati i  iz baze podataka.
 
 *** POVEZIVANJE KORISNIKA SA NJEGOVIM TASKOVIMA ***
-URADJENO
-1. ID korisnika treba povezati sa taskovima koje je korisnik uneo
-URADJENO
-2. Tako da svaki put kada se prijavi odredjeni korisnik na ekranu se prikazu taskovi, koje je on i ispisao. (SESSION['']);
+        URADJENO
+        1. ID korisnika treba povezati sa taskovima koje je korisnik uneo
+        URADJENO
+        2. Tako da svaki put kada se prijavi odredjeni korisnik na ekranu se prikazu taskovi, koje je on i ispisao. (SESSION['']);
 
 *** DIZAJN ***
-1.Napraviti dizajn za stanicu PROFIL, LOGIN I REGISTRACIJU
-2.OPCIJE: kasnije dodati
+        1.Napraviti dizajn za stanicu PROFIL, LOGIN I REGISTRACIJU
+        2.OPCIJE: kasnije dodati
+
+        Izdizajnirati izgled aplikacije preko BS i CSS koliko toliko da izgleda uljudno. Glavna stranica, profil, completed tasks
+        i za menjanje lozinke.
 
 *** CHECKBOX ***
-IMAM PROBLEM OVDE - SAMO KADA SE PRVI TASK CEKIRA, APLIKACIJA ME ODVEDE NA DRUGU STRANICU, ALI NA OSTALE CHECKBOXOVE
-NE RADI - PROVERITI DANAS ILI SUTRA
+        IMAM PROBLEM OVDE - SAMO KADA SE PRVI TASK CEKIRA, APLIKACIJA ME ODVEDE NA DRUGU STRANICU, ALI NA OSTALE CHECKBOXOVE
+        NE RADI - PROVERITI DANAS ILI SUTRA
+
+        Ovde koristiti JS
 
 
 <<<***
-Na checkboxovima se dogadja neka akcija kada se cekira ali samo prvi task i u nizu. Kada se cekira prvi, osvezenje se
-dogodi i korinsik je prosledjen na stranicu completed.php, ali ona ostaje prazna, nema cekiranog taska. Dok kada se drugi
-taaskovi cekiraju, ne dogadja se nista, nego samo kada se odcekiraju, onda se dogadja ista situacija kao i sa cekiranjem
-prvog taska.
-***>>>
+        Na checkboxovima se dogadja neka akcija kada se cekira ali samo prvi task i u nizu. Kada se cekira prvi, osvezenje se
+        dogodi i korinsik je prosledjen na stranicu completed.php, ali ona ostaje prazna, nema cekiranog taska. Dok kada se drugi
+        taaskovi cekiraju, ne dogadja se nista, nego samo kada se odcekiraju, onda se dogadja ista situacija kao i sa cekiranjem
+        prvog taska.
+        ***>>>
 
->>> Dodati na svaki task checkbox i kada se taj checkbox cekira task treba da se prebaci na drugu stranicu da predje u Completed,
-a sa content.php treba da se ukloni <<<
+        >>> Dodati na svaki task checkbox i kada se taj checkbox cekira task treba da se prebaci na drugu stranicu da predje u Completed,
+        a sa content.php treba da se ukloni <<<
 
 *** Datum i vreme ***
-URADJENO
-Dodati najpre u bazi podatka jos dve kolone za datum i vreme dodavanj taska
-Kad korisnik unese task, zajedno sa tekstom taksa treba u bazi i ekra da se prikaze tacno vreme i datum kada je taj
-task dodat.
+        URADJENO
+        Dodati najpre u bazi podatka jos dve kolone za datum i vreme dodavanj taska
+        Kad korisnik unese task, zajedno sa tekstom taksa treba u bazi i ekra da se prikaze tacno vreme i datum kada je taj
+        task dodat.
 
 *** Priority ***
-OSTALE SU SAMO BOJE DA SE DODAJU
-Kada korisnik odabere jednu od tri ponudjene opcije, taj tekst treba da postane READONLY,
-1. Ako je HIGH trebaju slova da budu crvene boje,
-2. Ako je MEDIUM trebaju slova da budu zute boje,
-3. Ako je LOW slova trebaju da budu zelene boje.
-Korisnik posle toga ne moze vise da menja opciju prioriteta.
+        OSTALE SU SAMO BOJE DA SE DODAJU
+        Kada korisnik odabere jednu od tri ponudjene opcije, taj tekst treba da postane READONLY,
+        1. Ako je HIGH trebaju slova da budu crvene boje,
+        2. Ako je MEDIUM trebaju slova da budu zute boje,
+        3. Ako je LOW slova trebaju da budu zelene boje.
+        Korisnik posle toga ne moze vise da menja opciju prioriteta.
 
 *** IZLISTIVANJE TASKOVA ***
-(Ovo ce da se radi nekad kasnije jer sad sam probao, nit mi je sta jasno  nit mi ide, tako da idem dalje da mi ovo
-trenutno ne oduzima vreme)
 
-Kada korisnik unese novi task, taj task treba da se prikaze prvi, tjh na vrhu tabele.
-Pokusati, da se prioriteti, mogu menjati. tj da se postavi kao OPTION na svaki, ali da se prilikom odjavljivanja sacuvaju
-izmene ako ih ima.
+        URADJENO
+
+        Kada korisnik unese novi task, taj task treba da se prikaze prvi, tjh na vrhu tabele.
+        Pokusati, da se prioriteti, mogu menjati. tj da se postavi kao OPTION na svaki, ali da se prilikom odjavljivanja sacuvaju
+        izmene ako ih ima.
 
 
 
 *** PROFIL ***
 
-1.Menjanje slike profila
-2.Izlistavanje osnovnih podataka, first name, last name, email adresa
+        1.Menjanje slike profila
+        2.Izlistavanje osnovnih podataka, first name, last name, email adresa
 
-SVI OVI PODACI TREBA DA SE OSTAVE DA MOGU I DA SE EDITUJU, I ISPOD FORME DA STOJE DVA DUGMETA, SAVE I DISCARD
+        SVI OVI PODACI TREBA DA SE OSTAVE DA MOGU I DA SE EDITUJU, I ISPOD FORME DA STOJE DVA DUGMETA, SAVE I DISCARD
 
-Ispod ove forme stajace druga koja ce da bude za promenu lozike, prikazace trenutnu lozinku u jednom input polju,
-zatim u sledecem redu ce da budu prikazana dva unpita za novi password i potvrdu novog passworda, kao i gore,
-isto sa dva dugmeta, SAVE I DISCARD
+        Ispod ove forme stajace druga koja ce da bude za promenu lozike, prikazace trenutnu lozinku u jednom input polju,
+        zatim u sledecem redu ce da budu prikazana dva INPUTA za novi password i potvrdu novog passworda, kao i gore,
+        isto sa dva dugmeta, SAVE I DISCARD
 
 
 *** KANTA ZA SMECE ***
-Kada korisnik obrise task, a zeli da ga vrati nazad, svi obrisani taskovi ce da odu u tu kantu, ali ce posle 15 dana od
-brisanja taksa sa profila automstski obrisati i iz kante
+
+        Kada korisnik obrise task, a zeli da ga vrati nazad, svi obrisani taskovi ce da odu u tu kantu, ali ce posle 15 dana od
+        brisanja taksa sa profila automstski obrisati i iz kante
 
 
 *** COMPLETED TASKS ***
-Na ovoj stranici je neophodno da se nalaze svi cekirani taskovi i ici ce na completed_tasks.php stanicu.
-Ti taskovi ce da budu readonly, tj da korisnik moze samo da vidi taskove koje je izvrsio i njihovu istoriju, npr, vreme
-kada je task upisan, vreme kada je task izvesen, i koliko je vremena trebalo korisniku da zavrsi jedan odredjeni zadatak.
+        Na ovoj stranici je neophodno da se nalaze svi cekirani taskovi i ici ce na completed_tasks.php stanicu.
+        Ti taskovi ce da budu readonly, tj da korisnik moze samo da vidi taskove koje je izvrsio i njihovu istoriju, npr, vreme
+        kada je task upisan, vreme kada je task izvesen, i koliko je vremena trebalo korisniku da zavrsi jedan odredjeni zadatak.
 
 

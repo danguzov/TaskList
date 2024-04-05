@@ -1,5 +1,4 @@
-
-   function deleteTask(taskId) {
+    function deleteTask(taskId) {
         let url = APP_PREFIX + "/controllers/deleteController.php";
 
         ajaxRequest(url, "post", {

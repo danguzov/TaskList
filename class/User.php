@@ -35,7 +35,38 @@ class User extends Database
         } else {
             return "N/A";
         }
+    }
 
+    public function getLastName($id)
+    {
+        $query = $this->sql->prepare("SELECT last_name FROM users WHERE id = ?");
+        $query->bind_param("i", $id);
+        $query->execute();
+
+        $result = $query->get_result();
+
+        if($row = $result->fetch_assoc()) {
+            $this->lastName = $row['last_name'];
+            return $this->lastName;
+        } else {
+            return "N/A";
+        }
+    }
+
+    public function getEmail($id)
+    {
+        $query = $this->sql->prepare("SELECT email FROM users WHERE id = ?");
+        $query->bind_param("i", $id);
+        $query->execute();
+
+        $result = $query->get_result();
+
+        if($row = $result->fetch_assoc()) {
+            $this->email = $row['email'];
+            return $this->email;
+        } else {
+            return "N/A";
+        }
     }
 
     public function getUserById($id)
@@ -49,8 +80,8 @@ class User extends Database
         if($row = $result->fetch_assoc()) {
             return $row;
         }
-
         return null;
     }
+
 }
 

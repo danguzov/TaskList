@@ -1,3 +1,6 @@
-.save {
-    background-color: #007bff;
+
+.btn-success:active,
+.btn-success:focus,
+.btn-success:hover {
+    color: #fff;
 }

@@ -20,17 +20,7 @@
             return $task->getTasks();
         }
 
-        // editTask (ova funkcija zove Task->edit() i nakon toga radi redirekciju
 
-        // deleteTask (ova funckija zove Task->delete() i radi redirekciju
-
-        // createTask (ova funkcija zove Task->create() i radi redirekciju
-
-        // getTasks (ova funckija zove Task->getAllT();
-
-
-
-        //ovde treba da nadjem nacin nekako da upuca ID taska a ne Usera, jer mi duplira id usera i nece da upise task u tabelu
         public function create($user_id, $task, $date, $time, $priority)
         {
             $insert = $this->sql->prepare("INSERT INTO tasks(user_id, task, date, time, priority) VALUES (?, ?, ?, ?, ?)");
@@ -75,10 +65,12 @@
         public function renderTaskRow($task)
         {
             return <<<HTML
+                
+                
                 <tr id="taskRow_{$task['id']}"> <!-- za cekiranje boxova da li su taskovi izvrseni -->
                     <form id="taskForm" action="../views/completed_tasks.php" method="POST">
                         <th>
-                            <input type="checkbox" name="completed_task" id="checkbox_{$task['id']}" onchange="finishTask({$task['id']})">
+                            <input type="checkbox" id="checkbox_{$task['id']}" class="task-checkbox" value="{$task['id']}" onchange="finishTask({$task['id']})">
                             <label for="checkbox_{$task['id']}"></label>
                         </th>
                     </form>
@@ -114,24 +106,29 @@
                         </a>
                     </td>
                 </tr>
+
+                <script src="../assets/js/completeTask.js"></script>
             HTML;
         }
 
         public function renderTasksTable($tasks)
         {
             $html = <<<HTML
-                <table class="table" style="padding: 24px;">
+            <div class="container">
+                 <table class="table" style="padding: 24px;">
                     <thead class="table-heading">
-                    <tr>
-                        <th style="background-color: #72A3EC; color: white; height: 3rem; padding: 2rem;">#</th>
-                        <th style="background-color: #72A3EC; color: white; height: 3rem; padding: 2rem;">Tasks</th>
-                        <th style="background-color: #72A3EC; color: white; height: 3rem; padding: 2rem;">Date Created</th>
-                        <th style="background-color: #72A3EC; color: white; height: 3rem; padding: 2rem;">Time Created</th>
-                        <th style="background-color: #72A3EC; color: white; height: 3rem; padding: 2rem;">Priority</th>
-                        <th style="background-color: #72A3EC; color: white; height: 3rem; padding: 2rem;">Action</th>
-                    </tr>
+                        <tr class="">
+                            <th style="background-color: #72A3EC; color: white; height: 3rem; padding: 2rem;">#</th>
+                            <th style="background-color: #72A3EC; color: white; height: 3rem; padding: 2rem;">Tasks</th>
+                            <th style="background-color: #72A3EC; color: white; height: 3rem; padding: 2rem;">Date Created</th>
+                            <th style="background-color: #72A3EC; color: white; height: 3rem; padding: 2rem;">Time Created</th>
+                            <th style="background-color: #72A3EC; color: white; height: 3rem; padding: 2rem;">Priority</th>
+                            <th style="background-color: #72A3EC; color: white; height: 3rem; padding: 2rem;">Action</th>
+                        </tr>
                     </thead>
-                    <tbody>
+                <tbody>
+            </div>
+                
             HTML;
 
             foreach ($tasks as $task) {

@@ -1,17 +1,4 @@
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Postavljanje minimalne visine tela na 100% visine ekrana */
-    margin: 0;
-}
-
-main {
-    flex: 1; /* Omogućava "rastezanje" main dela tako da zauzima preostali prostor */
-}
-
-.footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
+footer {
+    background-color: white;
+    color: black;
 }

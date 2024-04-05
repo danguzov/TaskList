@@ -23,16 +23,24 @@
 
     $task_controller = new TaskController();
     $tasks = $task_controller->getAllTasks();
-
-     require_once "navbar.php"
 ?>
+    <?php require_once "modal_element.php"; ?>
+    <?php require_once "content_nav.php"; ?>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <?= $task_controller->renderTasksTable($tasks) ?>
+            </div>
+        </div>
+    </div>
+
+
 
     <!-- include CSS -->
     <link href="../assets/css/content.css" rel="stylesheet">
     <link href="../assets/css/icons.css" rel="stylesheet">
-
-    <?= $task_controller->renderTasksTable($tasks) ?>
-
+    <!-- include js -->
     <script src="../assets/js/deleteTask.js"></script>
     <script src="../assets/js/updateTask.js"></script>
 
