@@ -79,17 +79,17 @@
 
         <form method="post" action="../controllers/change_password.php">
             <div class="row mt-2">
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <label class="labels">Current Password *</label>
                     <input type="password" name="current_password" class="form-control" placeholder="" value="" required>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <label class="labels">New password *</label>
                     <input type="password" name="new_password" class="form-control" placeholder="" value="" required>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <label class="labels">Re-enter password *</label>
                     <input type="password" name="confirm_password" class="form-control" placeholder="" value="" required>
                 </div>

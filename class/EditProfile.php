@@ -15,13 +15,14 @@
             parent::__construct();
 
         }
-        public function create($id, $mobile_number, $city, $address, $postcode)
+        public function create($mobile_number, $city, $address, $postcode, $user_id)
         {
-            $insert = $this->sql->prepare("INSERT INTO users(id, mobile_number, city, address, postcode) VALUES (?, ?, ?, ?, ?)");
-            $insert->bind_param("issss", $id,$mobile_number, $city, $address, $postcode);
+            $insert = $this->sql->prepare("INSERT INTO profile(mobile_number, city, address, postcode, user_id) VALUES (?, ?, ?, ?, ?)");
+            $insert->bind_param("ssssi", $mobile_number, $city, $address, $postcode, $user_id);
             $insert->execute();
-        }
 
+            header("location: ../views/profile.php");
+        }
     }
 
 
