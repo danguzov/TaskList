@@ -9,10 +9,15 @@ class User extends Database
 {
     public $sql;
     public $id;
+    public $user_id;
     public $firstName;
     public $lastName;
     public $email;
     public $password;
+    public $mobile_number;
+    public $city;
+    public $address;
+    public $postcode;
 
     public function __construct($firstName = '')
     {
@@ -68,6 +73,73 @@ class User extends Database
             return "N/A";
         }
     }
+
+    public function getMobileNumber($user_id)
+    {
+        $query = $this->sql->prepare("SELECT mobile_number FROM profile WHERE user_id = ?");
+        $query->bind_param("i", $user_id);
+        $query->execute();
+
+        $result = $query->get_result();
+
+        if($row = $result->fetch_assoc()) {
+            $this->mobile_number = $row['mobile_number'];
+            return $this->mobile_number;
+        } else {
+            return "N/A";
+        }
+    }
+
+    public function getCity($user_id)
+    {
+        $query = $this->sql->prepare("SELECT city FROM profile WHERE user_id = ?");
+        $query->bind_param("i", $user_id);
+        $query->execute();
+
+        $result = $query->get_result();
+
+        if($row = $result->fetch_assoc()) {
+            $this->city = $row['city'];
+            return $this->city;
+        } else {
+            return "N/A";
+        }
+    }
+
+    public function getAddress($user_id)
+    {
+        $query = $this->sql->prepare("SELECT address FROM profile WHERE user_id = ?");
+        $query->bind_param("i", $user_id);
+        $query->execute();
+
+        $result = $query->get_result();
+
+        if($row = $result->fetch_assoc()) {
+            $this->address = $row['address'];
+            return $this->address;
+        } else {
+            return "N/A";
+        }
+    }
+
+    public function getPostcode($user_id)
+    {
+        $query = $this->sql->prepare("SELECT postcode FROM profile WHERE user_id = ?");
+        $query->bind_param("i", $user_id);
+        $query->execute();
+
+        $result = $query->get_result();
+
+        if($row = $result->fetch_assoc()) {
+            $this->postcode = $row['postcode'];
+            return $this->postcode;
+        } else {
+            return "N/A";
+        }
+    }
+
+
+
 
     public function getUserById($id)
     {

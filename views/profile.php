@@ -48,19 +48,19 @@
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <label class="labels">Mobile Number</label>
-                        <input type="text" class="form-control" name="mobile_number" pattern="[0-9]+" title="Enter only numbers" value="">
+                        <input type="text" class="form-control" name="mobile_number" pattern="[0-9]+" title="Enter only numbers" value="<?= $mobile_number ?>">
                     </div>
                     <div class="col-md-12">
                         <label class="labels">City</label>
-                        <input type="text" class="form-control" name="city" value="">
+                        <input type="text" class="form-control" name="city" value=" <?= $city ?>">
                     </div>
                     <div class="col-md-12">
                         <label class="labels">Address</label>
-                        <input type="text" class="form-control" name="address" value="">
+                        <input type="text" class="form-control" name="address" value=" <?= $address ?>">
                     </div>
                     <div class="col-md-12">
                         <label class="labels">Postcode</label>
-                        <input type="text" class="form-control" name="postcode" value="">
+                        <input type="text" class="form-control" name="postcode" value="<?= $postcode ?>">
                     </div>
 
                     <div class="mt-5 text-center">
