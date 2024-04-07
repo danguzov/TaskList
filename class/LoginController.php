@@ -39,6 +39,7 @@
                     header("Location: ../views/content.php");
                 } else {
                     echo "Wrong password!";
+                    var_dump($password);
                 }
             } else {
                 echo "Something went wrong, email doesn't matched!";
@@ -65,6 +66,11 @@
         {
             return $this->hashPassword($password);
         }
+
+
+
+
+
 
         public function setSession($user)
         {

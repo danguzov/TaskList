@@ -138,7 +138,50 @@ class User extends Database
         }
     }
 
+    public function checkPassword()
+    {
+        if (!isset($_POST['current_password'])) {
+            echo "Please enter current password.";
+            return;
+        }
 
+        $current_password = $_POST['current_password'];
+
+        $user_id = $_SESSION['user_id'];
+
+        // Get result from DB
+        $current_user = $this->getUserById($user_id);
+        $db_password = $current_user['password'];
+
+        if (password_verify($current_password, $db_password)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function changePassword()
+    {
+        $newPassword = $_POST['new_password'];
+        $confirmPassword = $_POST['confirm_password'];
+        $user_id = $_SESSION['user_id'];
+
+        if($this->checkPassword()) {
+            if($newPassword == $confirmPassword) {
+                $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
+                $query = $this->sql->prepare("UPDATE users SET password = ? WHERE id = ?");
+                $query->bind_param("si", $hashedPassword, $user_id);
+                $query->execute();
+                echo  "Password successfully changed";
+                var_dump($newPassword);
+                header("Location: ../views/profile.php");
+            } else {
+                echo "New password and Confirm password do not match.";
+            }
+        } else {
+            echo "Current password is incorrect.";
+        }
+    }
 
 
     public function getUserById($id)
@@ -154,6 +197,8 @@ class User extends Database
         }
         return null;
     }
+
+
 
 }
 
