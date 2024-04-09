@@ -37,7 +37,7 @@
                 <div class="row mt-2">
                     <div class="col-md-12">
                         <label class="labels">E-mail</label>
-                        <input type="text" class="form-control" name="first_name" value="<?= $email ?>">
+                        <input type="text" class="form-control" name="first_name" value="<?= $userData['email'] ?>">
                     </div>
 
                 </div>
@@ -48,19 +48,19 @@
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <label class="labels">Mobile Number</label>
-                        <input type="text" class="form-control" name="mobile_number" pattern="[0-9]+" title="Enter only numbers" value="<?= $mobile_number ?>">
+                        <input type="text" class="form-control" name="mobile_number" pattern="[0-9]+" title="Enter only numbers" value="<?= $userData['mobile_number'] ?>">
                     </div>
                     <div class="col-md-12">
                         <label class="labels">City</label>
-                        <input type="text" class="form-control" name="city" value=" <?= $city ?>">
+                        <input type="text" class="form-control" name="city" value=" <?= $userData['city'] ?>">
                     </div>
                     <div class="col-md-12">
                         <label class="labels">Address</label>
-                        <input type="text" class="form-control" name="address" value=" <?= $address ?>">
+                        <input type="text" class="form-control" name="address" value=" <?= $userData['address'] ?>">
                     </div>
                     <div class="col-md-12">
                         <label class="labels">Postcode</label>
-                        <input type="text" class="form-control" name="postcode" value="<?= $postcode ?>">
+                        <input type="text" class="form-control" name="postcode" value="<?= $userData['postcode'] ?>">
                     </div>
 
                     <div class="mt-5 text-center">
@@ -71,32 +71,31 @@
         </form>
     </div>
 
-
     <div class="p-3 py-5">
         <div class="d-flex justify-content-between align-items-center mb-3" style="margin-top: 32px;">
             <h4 class="text-right">Change Password</h4>
         </div>
 
-        <form method="post" action="../controllers/change_password.php">
+        <form method="post" action="../controllers/change_password.php"">
             <div class="row mt-2">
                 <div class="col-md-6">
                     <label class="labels">Current Password *</label>
-                    <input type="password" name="current_password" class="form-control" placeholder="" value="" required>
+                    <input type="password" name="current_password" class="form-control" required>
                 </div>
 
                 <div class="col-md-6">
                     <label class="labels">New password *</label>
-                    <input type="password" name="new_password" class="form-control" placeholder="" value="" required>
+                    <input type="password" name="new_password" class="form-control" required>
                 </div>
 
                 <div class="col-md-6">
                     <label class="labels">Re-enter password *</label>
-                    <input type="password" name="confirm_password" class="form-control" placeholder="" value="" required>
+                    <input type="password" name="confirm_password" class="form-control" required>
                 </div>
             </div>
 
             <div class="mt-5 text-center">
-                <button class="btn btn-primary profile-button" type="submit" style="background-color: #72A3EC">Save</button>
+                <button class="btn btn-primary profile-button" type="submit" style="background-color: #72A3EC">Change Password</button>
                 <button class="btn btn-primary profile-button" type="reset" style="background-color: rgba(255, 99, 71);">Discard</button>
             </div>
         </form>

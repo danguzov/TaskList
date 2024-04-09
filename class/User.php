@@ -57,96 +57,38 @@ class User extends Database
             return "N/A";
         }
     }
-
-    public function getEmail($id)
-    {
-        $query = $this->sql->prepare("SELECT email FROM users WHERE id = ?");
-        $query->bind_param("i", $id);
-        $query->execute();
-
-        $result = $query->get_result();
-
-        if($row = $result->fetch_assoc()) {
-            $this->email = $row['email'];
-            return $this->email;
-        } else {
-            return "N/A";
-        }
-    }
-
-    public function getMobileNumber($user_id)
-    {
-        $query = $this->sql->prepare("SELECT mobile_number FROM profile WHERE user_id = ?");
+    // Get user Data from users and profile table
+    public function getUserData($user_id) {
+        $query = $this->sql->prepare("SELECT users.email, profile.mobile_number, profile.city, profile.address, profile.postcode 
+        FROM users
+        LEFT JOIN profile ON users.id = profile.user_id
+        WHERE users.id = ?");
         $query->bind_param("i", $user_id);
         $query->execute();
 
         $result = $query->get_result();
 
         if($row = $result->fetch_assoc()) {
-            $this->mobile_number = $row['mobile_number'];
-            return $this->mobile_number;
+            return[
+                'email' => $row['email'],
+                'mobile_number' => $row['mobile_number'],
+                'city' => $row['city'],
+                'address' => $row['address'],
+                'postcode' => $row['postcode'],
+            ];
         } else {
             return "N/A";
         }
     }
 
-    public function getCity($user_id)
-    {
-        $query = $this->sql->prepare("SELECT city FROM profile WHERE user_id = ?");
-        $query->bind_param("i", $user_id);
-        $query->execute();
-
-        $result = $query->get_result();
-
-        if($row = $result->fetch_assoc()) {
-            $this->city = $row['city'];
-            return $this->city;
-        } else {
-            return "N/A";
-        }
-    }
-
-    public function getAddress($user_id)
-    {
-        $query = $this->sql->prepare("SELECT address FROM profile WHERE user_id = ?");
-        $query->bind_param("i", $user_id);
-        $query->execute();
-
-        $result = $query->get_result();
-
-        if($row = $result->fetch_assoc()) {
-            $this->address = $row['address'];
-            return $this->address;
-        } else {
-            return "N/A";
-        }
-    }
-
-    public function getPostcode($user_id)
-    {
-        $query = $this->sql->prepare("SELECT postcode FROM profile WHERE user_id = ?");
-        $query->bind_param("i", $user_id);
-        $query->execute();
-
-        $result = $query->get_result();
-
-        if($row = $result->fetch_assoc()) {
-            $this->postcode = $row['postcode'];
-            return $this->postcode;
-        } else {
-            return "N/A";
-        }
-    }
 
     public function checkPassword()
     {
         if (!isset($_POST['current_password'])) {
             echo "Please enter current password.";
-            return;
         }
 
         $current_password = $_POST['current_password'];
-
         $user_id = $_SESSION['user_id'];
 
         // Get result from DB
@@ -162,6 +104,13 @@ class User extends Database
 
     public function changePassword()
     {
+        if (!isset($_POST['new_password'])) {
+            echo "Please enter current password.";
+        }
+        if (!isset($_POST['confirm_password'])) {
+            echo "Please enter current password.";
+        }
+
         $newPassword = $_POST['new_password'];
         $confirmPassword = $_POST['confirm_password'];
         $user_id = $_SESSION['user_id'];
@@ -172,8 +121,7 @@ class User extends Database
                 $query = $this->sql->prepare("UPDATE users SET password = ? WHERE id = ?");
                 $query->bind_param("si", $hashedPassword, $user_id);
                 $query->execute();
-                echo  "Password successfully changed";
-                var_dump($newPassword);
+
                 header("Location: ../views/profile.php");
             } else {
                 echo "New password and Confirm password do not match.";
@@ -182,7 +130,6 @@ class User extends Database
             echo "Current password is incorrect.";
         }
     }
-
 
     public function getUserById($id)
     {
