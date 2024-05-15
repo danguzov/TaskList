@@ -7,117 +7,112 @@
 
 <?php $user_id = $_SESSION['user_first_name']?>
 
+<!-- <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+-->
 
-<form method="post" action="../controllers/editProfileController.php"">
-<div class="p-4 space-y-12">
-    <div class="border-b border-gray-900/10 pb-12">
-        <h2 class="text-base font-semibold leading-7 text-gray-900">Profile</h2>
-        <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
-        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-            <div class="col-span-full">
-                <label for="photo" class="block text-sm font-medium leading-6 text-gray-900">Photo</label>
-                <div class="mt-2 flex items-center gap-x-3">
-                    <svg class="h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
-                    </svg>
-                    <button type="button" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Change</button>
+<section class=" py-1 bg-blueGray-50">
+    <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
+        <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+            <div class="rounded-t bg-white mb-0 px-6 py-6">
+                <div class="text-center flex justify-between">
+                    <h6 class="text-blueGray-700 text-xl font-bold">
+                        My account
+                    </h6>
+                    <a href="changePassword.php" class="bg-indigo-500 text-white active:bg-indigo-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">
+                        <button  type="button">
+                            Change Password
+                        </button>
+                    </a>
                 </div>
+            </div>
+            <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+                <form method="post" action="../controllers/editProfileController.php">
+                    <h6 class="text-gray-400 text-sm mt-3 mb-6 font-bold">
+                        User Information
+                    </h6>
+                    <div class="flex flex-wrap">
+                        <div class="w-full lg:w-6/12 px-4">
+                            <div class="relative w-full mb-3">
+                                <label class="text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                                    First Name
+                                </label>
+                                <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="border-1 border-black-100 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="<?= $user_id; ?>">
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-6/12 px-4">
+                            <div class="relative w-full mb-3">
+                                <label class="text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                                    Last name
+                                </label>
+                                <input type="text" name="last-name" id="last-name" value="<?= $last_name; ?>" autocomplete="family-name" class="border-1 border-black-100 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-6/12 px-4">
+                            <div class="relative w-full mb-3">
+                                <label class="text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                                    Email Address
+                                </label>
+                                <input id="email" name="email" type="email" value="<?= $userData['email'] ?>" class="border-1 border-black-100 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <h6 class="text-gray-400 text-sm mt-3 mb-6 font-bold">
+                        Contact Information
+                    </h6>
+                    <div class="flex flex-wrap">
+                        <div class="w-full lg:w-12/12 px-4">
+                            <div class="relative w-full mb-3">
+                                <label class="text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                                    Address
+                                </label>
+                                <input type="text" name="address" id="street-address" value="<?= $userData['address'] ?>" class="border-1 border-black-100 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-4/12 px-4">
+                            <div class="relative w-full mb-3">
+                                <label class="text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                                    City
+                                </label>
+                                <input type="text" name="city" id="city" value="<?= $userData['city'] ?>" class="border-1 border-black-100 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-4/12 px-4">
+                            <div class="relative w-full mb-3">
+                                <label class="text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                                    Postal Code
+                                </label>
+                                <input type="text" name="postcode" id="street-address" value="<?= $userData['postcode'] ?>" class="border-1 border-black-100 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-4/12 px-4">
+                            <div class="relative w-full mb-3">
+                                <label class="text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                                    Mobile number
+                                </label>
+                                <input type="text" name="mobile_number" id="street-address" value="<?= $userData['mobile_number'] ?>" class="border-1 border-black-100 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex justify-between gap-x-6">
+                        <a href="content.php" class="flex justify-start bg-white-500 text-grey active:bg-blue-200 text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 font-bold border-1 border-black-100">
+                            <button type="button">
+                                Back
+                            </button>
+                        </a>
+                        <div class="flex justify-end">
+                            <button type="button" class="bg-red-500 text-white active:bg-red-600 text-xs px-4 py-2 rounded-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 font-bold">Cancel</button>
+                            <button type="submit" class="bg-indigo-500 text-white active:bg-indigo-600 text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 font-bold">Save</button>
+                        </div>
+                    </div>
+
+
+                </form>
             </div>
         </div>
     </div>
-
-    <div class="border-b border-gray-900/10 pb-12">
-        <h2 class="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
-        <p class="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p>
-
-        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-            <div class="sm:col-span-1">
-                <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
-                <div class="mt-2">
-                    <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="p-2 block w-full rounded-md border-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="<?= $user_id; ?>">
-                </div>
-            </div>
-
-            <div class="sm:col-span-1">
-                <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Last name</label>
-                <div class="mt-2">
-                    <input type="text" name="last-name" id="last-name" value="<?= $last_name; ?>" autocomplete="family-name" class="p-2 block w-full rounded-md border-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                </div>
-            </div>
-
-            <div class="sm:col-span-1">
-                <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
-                <div class="mt-2">
-                    <input id="email" name="email" type="email" value="<?= $userData['email'] ?>" autocomplete="email" class="p-2 block w-full rounded-md border-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                </div>
-            </div>
-
-            <div class="col-span-3">
-                <label for="street-address" class="block text-sm font-medium leading-6 text-gray-900">Mobile number</label>
-                <div class="mt-2">
-                    <input type="text" name="street-address" id="street-address" value="<?= $userData['mobile_number'] ?>" autocomplete="street-address" class="p-2 block w-full rounded-md border-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" pattern="[0-9]+" title="Please enter only numbers">
-                </div>
-            </div>
-
-            <div class="col-span-2">
-                <label for="street-address" class="block text-sm font-medium leading-6 text-gray-900">City</label>
-                <div class="mt-2">
-                    <input type="text" name="street-address" id="street-address" value="<?= $userData['city'] ?>" autocomplete="street-address" class="p-2 w-full rounded-md border-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-2">
-                </div>
-            </div>
-
-            <div class="sm:col-span-2 sm:col-start-1">
-                <label for="city" class="block text-sm font-medium leading-6 text-gray-900">Street address</label>
-                <div class="mt-2">
-                    <input type="text" name="city" id="city" value="<?= $userData['address'] ?>" autocomplete="address-level2" class="p-2 block w-full rounded-md border-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                </div>
-            </div>
-
-            <div class="sm:col-span-2">
-                <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">ZIP / Postal code</label>
-                <div class="mt-2">
-                    <input type="text" name="postal-code" id="postal-code" value="<?= $userData['postcode'] ?>" autocomplete="postal-code" class="p-2 block w-full rounded-md border-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-            <div class="mt-6 flex items-center justify-end gap-x-6">
-                <button type="button" class="rounded-md bg-gray-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-grey-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cancel</button>
-                <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
-            </div>
-        </form>
-
-        <form method="post" action="../controllers/change_password.php"">
-            <div class="row mt-2 p-4">
-                <div class="sm:col-span-1">
-                    <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Current Password</label>
-                    <div class="mt-2">
-                        <input type="password" name="current_password" autocomplete="family-name" class="p-2 block w-full rounded-md border-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
-                    </div>
-                </div>
-
-                <div class="sm:col-span-1">
-                    <label for="password" class="block text-sm font-medium leading-6 text-gray-900">New Password</label>
-                    <div class="mt-2">
-                        <input type="password" name="new_password" autocomplete="family-name" class="p-2 block w-full rounded-md border-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
-                    </div>
-                </div>
-
-                <div class="sm:col-span-1">
-                    <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Re-enter Password</label>
-                    <div class="mt-2">
-                        <input type="password" name="confirm_password" autocomplete="family-name" class="p-2 block w-full rounded-md border-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-6 flex items-center justify-end gap-x-6">
-                <button type="button" class="rounded-md bg-gray-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-grey-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cancel</button>
-                <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
-            </div>
-        </form>
-    </div>
+</section>
 
 <?php require_once "../include/scripts.php" ?>

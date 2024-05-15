@@ -1,88 +1,112 @@
-<?php include "include/header.php"  ?>
+<?php
 
-<div class="hidden lg:flex lg:flex-1 lg:justify-end">
-    <a href="views/login.php" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
-</div>
+/*session_start();
 
-<div class="bg-white py-24 sm:py-32">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="mx-auto max-w-2xl lg:text-center">
-            <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Task List App</p>
-            <p class="mt-6 text-lg leading-8 text-gray-600">"Experience seamless task management with our intuitive <em>Task List App</em>. Easily input, edit, delete, and check off tasks to stay organized and productive. Streamline your workflow and never miss a deadline again."</p>
+require_once '../class/User.php';
+require_once '../class/Database.php';
+require_once "../class/LoginController.php";
+
+$user = new LoginController();
+
+if (isset($_SESSION['user_id'])) {
+    $user->logout();
+}
+
+require_once "../include/header.php";
+*/
+?>
+<?php include "include/header.php" ?>
+
+
+<!--
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-lg-5 py-5">
+        <div class="col-lg-7">
+            <div class="flex justify-between">
+                <div>
+                    <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Task List App</h1>
+                    <p class="col-lg-10 fs-4">"Experience seamless task management with our intuitive <em>Task List App</em>. Easily input, edit, delete, and check off tasks to stay organized and productive. Streamline your workflow and never miss a deadline again."</p>
+                </div>
+                -->
+
+
+
+<!-- component -->
+<div class="bg-white dark:bg-gray-900">
+    <div class="flex justify-center h-screen">
+        <div class="hidden bg-cover lg:block lg:w-2/3" style="background-image: url(https://images.unsplash.com/photo-1616763355603-9755a640a287?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)">
+            <div class="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
+                <div>
+                    <h2 class="text-4xl font-bold text-white">Task List App</h2>
+
+                    <p class="max-w-xl mt-3 text-gray-300">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In autem ipsa, nulla laboriosam dolores, repellendus perferendis libero suscipit nam temporibus molestiae</p>
+                </div>
+            </div>
         </div>
-        <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-            <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-                <div class="relative pl-16">
-                    <dt class="text-base font-semibold leading-7 text-gray-900">
-                        <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                            <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
-                            </svg>
-                        </div>
-                        Push to deploy
-                    </dt>
-                    <dd class="mt-2 text-base leading-7 text-gray-600">"Experience seamless task management with our intuitive <em>Task List App</em>. Easily input, edit, delete, and check off tasks to stay organized and productive. Streamline your workflow and never miss a deadline again."</dd>
+
+        <div class="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6">
+            <div class="flex-1">
+                <div class="text-center">
+                    <h2 class="text-4xl font-bold text-center text-gray-700 dark:text-white">Log In</h2>
+
+                    <p class="mt-3 text-gray-500 dark:text-gray-300">Sign in to access your account</p>
                 </div>
-                <div class="relative pl-16">
-                    <dt class="text-base font-semibold leading-7 text-gray-900">
-                        <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                            <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-                            </svg>
+
+                <div class="mt-8">
+                    <form class="mt-10 space-y-6" action="controllers/loginController.php" method="POST">
+                        <div>
+                            <label for="email" class="block mb-2 text-sm text-gray-600 dark:text-gray-200">Email Address</label>
+                            <input id="email" name="email" type="email" autocomplete="email" placeholder="example@example.com" required class="p-2 block w-full rounded-md border-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
-                        SSL certificates
-                    </dt>
-                    <dd class="mt-2 text-base leading-7 text-gray-600">"Experience seamless task management with our intuitive <em>Task List App</em>. Easily input, edit, delete, and check off tasks to stay organized and productive. Streamline your workflow and never miss a deadline again."</dd>
-                </div>
-                <div class="relative pl-16">
-                    <dt class="text-base font-semibold leading-7 text-gray-900">
-                        <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                            <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-                            </svg>
+
+                        <div class="mt-6">
+                            <div class="flex justify-between mb-2">
+                                <label for="password" class="text-sm text-gray-600 dark:text-gray-200">Password</label>
+                            </div>
+
+                            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Your Password" required class="p-2 block w-full rounded-md border-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
-                        Simple queues
-                    </dt>
-                    <dd class="mt-2 text-base leading-7 text-gray-600">"Experience seamless task management with our intuitive <em>Task List App</em>. Easily input, edit, delete, and check off tasks to stay organized and productive. Streamline your workflow and never miss a deadline again."</dd>
-                </div>
-                <div class="relative pl-16">
-                    <dt class="text-base font-semibold leading-7 text-gray-900">
-                        <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                            <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M7.864 4.243A7.5 7.5 0 0119.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 004.5 10.5a7.464 7.464 0 01-1.15 3.993m1.989 3.559A11.209 11.209 0 008.25 10.5a3.75 3.75 0 117.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 01-3.6 9.75m6.633-4.596a18.666 18.666 0 01-2.485 5.33" />
-                            </svg>
+
+                        <div class="mt-6">
+                            <button
+                                    class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                                Sign in
+                            </button>
                         </div>
-                        Advanced security
-                    </dt>
-                    <dd class="mt-2 text-base leading-7 text-gray-600">"Experience seamless task management with our intuitive <em>Task List App</em>. Easily input, edit, delete, and check off tasks to stay organized and productive. Streamline your workflow and never miss a deadline again."</dd>
+                    </form>
+
+                    <p class="mt-6 text-sm text-center text-gray-400">Don&#x27;t have an account yet? <a href="views/registration.php" class="text-blue-500 focus:outline-none focus:underline hover:underline">Sign up</a>.</p>
                 </div>
-            </dl>
+            </div>
         </div>
     </div>
 </div>
 
-<?php  require_once "views/footer.php"?>
+<?php require_once "views/footer.php" ?>
+<?php require_once "include/scripts.php" ?>
 
+<!--
+This example requires some changes to your config:
 
-        <!--
-  This example requires some changes to your config:
+```
+// tailwind.config.js
+module.exports = {
+// ...
+plugins: [
+// ...
+require('@tailwindcss/forms'),
+],
+}
+```
+-->
+<!--
+  This example requires updating your template:
 
   ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
+  <html class="h-full bg-white">
+  <body class="h-full">
   ```
 -->
-        <!--
-          This example requires updating your template:
 
-          ```
-          <html class="h-full bg-white">
-          <body class="h-full">
-          ```
-        -->
+
+
