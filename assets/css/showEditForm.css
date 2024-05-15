@@ -1,0 +1,7 @@
+.task-edit-form.hidden {
+    display: none;
+}
+
+.task-edit-form {
+    display: block;
+}
