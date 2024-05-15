@@ -2,9 +2,4 @@
 
     require_once "sidebar.php";
 
-
-
-
-
-
-
+ 
